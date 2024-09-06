@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply bg-gray-100 text-gray-800;
+}
+
+.react-calendar__tile--active {
+  background: #2563eb !important; 
+  color: white !important;
+}
+
+.react-calendar .highlighted-date {
+  font-weight: bold;
+  background-color: darkkhaki;
+  border-radius: 100%;
+  
+}
