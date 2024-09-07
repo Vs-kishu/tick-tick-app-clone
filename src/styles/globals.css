@@ -17,3 +17,35 @@ html, body {
   border-radius: 100%;
   
 }
+
+/* MiniCalendarPreview.css */
+
+.calendar-container {
+  position: relative;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.react-calendar {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.react-calendar__tile {
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.highlighted-date {
+  background-color: #4caf50; /* Green background for highlighted dates */
+  color: white; /* White text color */
+  font-weight: bold;
+}
+
+.react-calendar__tile:enabled:hover {
+  background-color: #f0f0f0; /* Light gray on hover */
+}
+
