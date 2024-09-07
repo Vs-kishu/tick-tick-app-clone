@@ -1,4 +1,5 @@
-import { format } from 'date-fns';
+import { format } from "date-fns";
+import React from "react";
 
 const ScheduledDatesTable = ({ recurringDates }) => {
   if (!recurringDates || recurringDates.length === 0) return null;
@@ -6,7 +7,7 @@ const ScheduledDatesTable = ({ recurringDates }) => {
   // Group dates by year and month
   const groupedDates = recurringDates.reduce((acc, date) => {
     const year = date.getFullYear();
-    const month = format(date, 'MMMM');
+    const month = format(date, "MMMM");
 
     if (!acc[year]) acc[year] = {};
     if (!acc[year][month]) acc[year][month] = [];
@@ -39,16 +40,16 @@ const ScheduledDatesTable = ({ recurringDates }) => {
                         {groupedDates[year][month].map((date, index) => (
                           <option
                             key={index}
-                            value={format(date, 'yyyy-MM-dd')}
+                            value={format(date, "yyyy-MM-dd")}
                           >
-                            {format(date, 'do EEEE')}{' '}
+                            {format(date, "do EEEE")}{" "}
                             {/* Shows date and day without year and month */}
                           </option>
                         ))}
                       </select>
                     ) : (
                       <span className="block">
-                        {format(groupedDates[year][month][0], 'do EEEE')}{' '}
+                        {format(groupedDates[year][month][0], "do EEEE")}{" "}
                         {/* Shows date and day without year and month */}
                       </span>
                     )}

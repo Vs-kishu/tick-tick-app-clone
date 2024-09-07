@@ -1,7 +1,9 @@
-import { useDatePickerStore } from '@/store/useDatePickerStore';
+import { useDatePickerStore } from "@/store/useDatePickerStore";
+import React from "react";
 
 export default function SummaryTable() {
-  const { startDate, endDate, recurrencePattern, recurrenceOptions } = useDatePickerStore();
+  const { startDate, endDate, recurrencePattern, recurrenceOptions } =
+    useDatePickerStore();
 
   return (
     <div className="mt-6">
@@ -16,15 +18,24 @@ export default function SummaryTable() {
         <tbody>
           <tr className="border-b">
             <td className="p-4 font-medium">Start Date</td>
-            <td className="p-4">{startDate ? startDate.toDateString() : 'Not selected'}</td>
+            <td className="p-4">
+              {startDate ? startDate.toDateString() : "Not selected"}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="p-4 font-medium">End Date</td>
-            <td className="p-4">{endDate ? endDate.toDateString() : 'Not selected'}</td>
+            <td className="p-4">
+              {endDate ? endDate.toDateString() : "Not selected"}
+            </td>
           </tr>
           <tr className="border-b">
             <td className="p-4 font-medium">Recurrence Pattern</td>
-            <td className="p-4">{recurrencePattern ? recurrencePattern.charAt(0).toUpperCase() + recurrencePattern.slice(1) : 'Not selected'}</td>
+            <td className="p-4">
+              {recurrencePattern
+                ? recurrencePattern.charAt(0).toUpperCase() +
+                  recurrencePattern.slice(1)
+                : "Not selected"}
+            </td>
           </tr>
           {/* Recurrence options, such as interval and specific days, if applicable */}
           {recurrenceOptions && Object.keys(recurrenceOptions).length > 0 && (
@@ -33,7 +44,10 @@ export default function SummaryTable() {
               <td className="p-4">
                 {Object.entries(recurrenceOptions).map(([key, value]) => (
                   <div key={key}>
-                    <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+                    <strong>
+                      {key.charAt(0).toUpperCase() + key.slice(1)}:
+                    </strong>{" "}
+                    {value}
                   </div>
                 ))}
               </td>

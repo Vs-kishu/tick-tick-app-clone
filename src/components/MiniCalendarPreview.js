@@ -1,10 +1,11 @@
-import React from 'react';
-import { useDatePickerStore } from '@/store/useDatePickerStore';
-import { useMemo } from 'react';
-import Calendar from 'react-calendar';
+import React from "react";
+import { useDatePickerStore } from "@/store/useDatePickerStore";
+import { useMemo } from "react";
+import Calendar from "react-calendar";
 
 export default function MiniCalendarPreview() {
-  const { startDate, endDate, recurrencePattern, recurrenceOptions } = useDatePickerStore();
+  const { startDate, endDate, recurrencePattern, recurrenceOptions } =
+    useDatePickerStore();
 
   const getRecurringDates = () => {
     const dates = [];
@@ -15,20 +16,24 @@ export default function MiniCalendarPreview() {
     const maxOccurrences = 100; // Limit the number of occurrences
     let count = 0;
 
-    while (currentDate <= (endDate || new Date(currentDate.setFullYear(currentDate.getFullYear() + 1)))) {
+    while (
+      currentDate <=
+      (endDate ||
+        new Date(currentDate.setFullYear(currentDate.getFullYear() + 1)))
+    ) {
       dates.push(new Date(currentDate)); // Add the current date to the list
 
       // Calculate the next date based on the recurrence pattern
       switch (recurrencePattern) {
-        case 'daily':
+        case "daily":
           currentDate.setDate(currentDate.getDate() + interval);
           break;
 
-        case 'weekly':
+        case "weekly":
           currentDate.setDate(currentDate.getDate() + interval * 7);
           break;
 
-        case 'monthly':
+        case "monthly":
           const currentMonth = currentDate.getMonth();
           currentDate.setMonth(currentMonth + interval);
 
@@ -38,7 +43,7 @@ export default function MiniCalendarPreview() {
           }
           break;
 
-        case 'yearly':
+        case "yearly":
           const currentYear = currentDate.getFullYear();
           currentDate.setFullYear(currentYear + interval);
 
@@ -59,16 +64,19 @@ export default function MiniCalendarPreview() {
     return dates;
   };
 
-  const recurringDates = useMemo(() => getRecurringDates(), [startDate, endDate, recurrencePattern, recurrenceOptions]);
+  const recurringDates = useMemo(
+    () => getRecurringDates(),
+    [startDate, endDate, recurrencePattern, recurrenceOptions]
+  );
 
   return (
     <div className="mt-4">
       <h3 className="text-sm font-medium">Preview</h3>
       <Calendar
         value={startDate}
-        tileClassName={({ date }) => 
-          recurringDates.some(d => d.toDateString() === date.toDateString()) 
-            ? 'highlighted-date' // Use your custom CSS class
+        tileClassName={({ date }) =>
+          recurringDates.some((d) => d.toDateString() === date.toDateString())
+            ? "highlighted-date" // Use your custom CSS class
             : null
         }
       />

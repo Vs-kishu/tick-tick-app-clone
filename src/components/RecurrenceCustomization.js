@@ -1,7 +1,9 @@
-import { useDatePickerStore } from '@/store/useDatePickerStore';
+import { useDatePickerStore } from "@/store/useDatePickerStore";
+import React from "react";
 
 export default function RecurrenceCustomization() {
-  const { recurrencePattern, recurrenceOptions, setRecurrenceOptions } = useDatePickerStore();
+  const { recurrencePattern, recurrenceOptions, setRecurrenceOptions } =
+    useDatePickerStore();
 
   // Customize options based on the pattern
   const handleCustomizationChange = (option, value) => {
@@ -19,7 +21,9 @@ export default function RecurrenceCustomization() {
             type="number"
             min="1"
             value={recurrenceOptions.interval || 1}
-            onChange={(e) => handleCustomizationChange('interval', e.target.value)}
+            onChange={(e) =>
+              handleCustomizationChange("interval", e.target.value)
+            }
             className="ml-2 p-1 border rounded"
           />
           <span className="ml-1">{recurrencePattern}</span>
